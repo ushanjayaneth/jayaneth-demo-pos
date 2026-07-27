@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+  <meta charset="UTF-8">
+  <title>System Factory Reset - Janith Mobile POS</title>
+  <style>
+    body { background: #06080f; color: #fff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; text-align: center; padding: 50px; margin: 0; }
+    .box { background: #0f1624; border: 1px solid #1f2937; border-radius: 12px; padding: 40px; max-width: 500px; margin: 0 auto; box-shadow: 0 10px 40px rgba(0,0,0,0.8); }
+    h1 { color: #ef4444; margin-top: 0; font-size: 24px; }
+    p { color: #9ca3af; line-height: 1.6; font-size: 14px; margin-bottom: 25px; }
+    input { width: 100%; padding: 12px; margin: 10px 0 20px; border-radius: 6px; border: 1px solid #374151; background: #030712; color: #fff; box-sizing: border-box; font-size: 16px; text-align: center; letter-spacing: 2px; }
+    button { background: #ef4444; color: #fff; border: none; padding: 14px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; font-size: 16px; width: 100%; transition: 0.2s; box-shadow: 0 4px 14px rgba(239,68,68,0.4); }
+    button:hover { background: #dc2626; transform: translateY(-2px); }
+    #status { margin-top: 24px; font-weight: bold; font-size: 15px; }
+    .success { color: #10b981; }
+    .error { color: #ef4444; }
+    .warning-box { background: rgba(239, 68, 68, 0.1); border: 1px dashed rgba(239, 68, 68, 0.4); padding: 15px; border-radius: 8px; margin-bottom: 25px; color: #fca5a5; font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h1>⚠️ සම්පූර්ණ පද්ධතිය රීසෙට් කිරීම</h1>
+    <div class="warning-box">
+      මෙහිදී සිස්ටම් එකේ ඇති <strong>සියලුම දත්ත</strong> (බිල්පත්, තොග, ගනුදෙනු, සැකසුම්) සම්පූර්ණයෙන්ම මැකී යනු ඇත. මෙය නැවත ආපසු හැරවිය නොහැක. කරුණාකර රීසෙට් කිරීමට පෙර සිස්ටම් එකේ Settings වලින් Backup එකක් Download කරගන්න.
+    </div>
+    
+    <label style="font-size: 13px; color: #d1d5db; display: block; text-align: left; margin-bottom: -5px;">Admin PIN අංකය ඇතුලත් කරන්න:</label>
+    <input type="password" id="pin" placeholder="••••" maxlength="6" />
+    
+    <button onclick="factoryReset()">🚨 පද්ධතිය රීසෙට් කරන්න (Factory Reset)</button>
+    <div id="status"></div>
+    
+    <div style="margin-top: 30px; font-size: 12px;">
+      <a href="index.html" style="color: #3b82f6; text-decoration: none;">← ආපසු POS එකට යන්න (Back to POS)</a>
+    </div>
+  </div>
+
+  <script>
+    const RTDB_URL = 'https://janith-mobile-pos-d4c74-default-rtdb.asia-southeast1.firebasedatabase.app';
+
+    async function factoryReset() {
+      const pin = document.getElementById('pin').value.trim();
+      const status = document.getElementById('status');
+      
+      if(!pin) {
+        status.innerHTML = '<span class="error">කරුණාකර Admin PIN එක ඇතුලත් කරන්න.</span>';
+        return;
+      }
+
+      // Read local settings to verify PIN if possible
+      let localSettings = localStorage.getItem('jm_settings');
+      if (localSettings) {
+          try {
+              let parsed = JSON.parse(localSettings);
+              if (parsed.adminPin && parsed.adminPin !== pin) {
+                  status.innerHTML = '<span class="error">❌ වැරදි PIN අංකයක්. කරුණාකර නිවැරදි Admin PIN එක ඇතුලත් කරන්න.</span>';
+                  return;
+              }
+          } catch(e) {}
+      }
+
+      if(!confirm('🚨 අවවාදයයි: ඔබගේ සියලුම දත්ත සම්පූර්ණයෙන්ම මැකී යනු ඇත! ඔබ 100% විශ්වාසද? (This cannot be undone!)')) return;
+      if(!confirm('මෙය අවසන් තහවුරු කිරීමයි (Final Confirmation). දත්ත මැකීමට අවශ්‍යද?')) return;
+
+      status.innerHTML = '<span style="color:#3b82f6">රීසෙට් වෙමින් පවතී... කරුණාකර රැඳී සිටින්න. (Resetting...)</span>';
+      
+      try {
+        // Clear Local IndexedDB Cache
+        if(window.indexedDB) {
+           indexedDB.deleteDatabase('janith-mobile-pos');
+        }
+        localStorage.clear();
+
+        // Clear Firebase Cloud DB
+        const r = await fetch(RTDB_URL + '/.json', {
+           method: 'PUT',
+           headers: {'Content-Type': 'application/json'},
+           body: JSON.stringify(null) // setting root to null deletes everything
+        });
+
+        if(!r.ok) throw new Error('Cloud Server Error (' + r.status + ')');
+
+        status.innerHTML = '<span class="success">✅ පද්ධතිය සම්පූර්ණයෙන්ම රීසෙට් කර අවසන්! දැන් ඔබට යෙදුම නැවත අලුතින්ම භාවිත කළ හැක.</span>';
+        
+        // Clear input
+        document.getElementById('pin').value = '';
+      } catch(e) {
+        status.innerHTML = '<span class="error">❌ රීසෙට් කිරීම අසාර්ථකයි: ' + e.message + '<br>ඔබගේ අන්තර්ජාල සම්බන්ධතාවය පරීක්ෂා කරන්න.</span>';
+      }
+    }
+  </script>
+</body>
+</html>
