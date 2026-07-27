@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <title>Jayaneth Demo POS - System Features & User Guide</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 15mm;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1e293b;
+            background-color: #ffffff;
+            line-height: 1.5;
+            margin: 0;
+            padding: 0;
+        }
+        .header-banner {
+            background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+            color: #ffffff;
+            padding: 24px 30px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            border-bottom: 4px solid #00d4ff;
+        }
+        .header-banner h1 {
+            margin: 0;
+            font-size: 26px;
+            font-weight: 800;
+            color: #00d4ff;
+            letter-spacing: 0.5px;
+        }
+        .header-banner p {
+            margin: 6px 0 0 0;
+            font-size: 14px;
+            color: #cbd5e1;
+        }
+        .badge {
+            display: inline-block;
+            background: rgba(0, 212, 255, 0.15);
+            color: #00d4ff;
+            border: 1px solid #00d4ff;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .section-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0f172a;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 6px;
+            margin-top: 24px;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+        }
+        .section-title span {
+            background-color: #00d4ff;
+            color: #0f172a;
+            width: 26px;
+            height: 26px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+        .card {
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 14px 16px;
+        }
+        .card-header {
+            font-weight: 700;
+            font-size: 14px;
+            color: #0f172a;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+        }
+        .card-header .icon {
+            font-size: 18px;
+            margin-right: 8px;
+        }
+        .card p {
+            margin: 0;
+            font-size: 12.5px;
+            color: #475569;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 12px;
+        }
+        th, td {
+            border: 1px solid #cbd5e1;
+            padding: 8px 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        tr:nth-child(even) {
+            background-color: #f1f5f9;
+        }
+        .step-box {
+            background-color: #f0fdf4;
+            border-left: 4px solid #22c55e;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            border-radius: 0 8px 8px 0;
+        }
+        .step-box h4 {
+            margin: 0 0 4px 0;
+            font-size: 13.5px;
+            color: #166534;
+        }
+        .step-box p {
+            margin: 0;
+            font-size: 12px;
+            color: #374151;
+        }
+        .footer {
+            margin-top: 30px;
+            text-align: center;
+            padding-top: 14px;
+            border-top: 1px solid #e2e8f0;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+        .page-break {
+            page-break-before: always;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Banner -->
+    <div class="header-banner">
+        <h1>JAYANETH DEMO POS</h1>
+        <p>ස්මාර්ට් සිල්ලර සහ තොග වෙළඳ කළමනාකරණ පද්ධතිය (Smart Retail & Wholesale POS System)</p>
+        <div class="badge">SYSTEM USER GUIDE & FEATURES MANUAL</div>
+    </div>
+
+    <!-- Section 1: Overview & Highlights -->
+    <div class="section-title">
+        <span>1</span> පද්ධතියේ ප්‍රධාන විශේෂාංග (Key System Features)
+    </div>
+
+    <div class="grid-2">
+        <div class="card">
+            <div class="card-header"><span class="icon">🏪</span> සිල්ලර & 📦 තොග (Retail & Wholesale)</div>
+            <p>එකම ඇප් එකෙන් සිල්ලර (Retail) සහ තොග (Wholesale) මිල ගණන් වලින් බිල්පත් නිකුත් කිරීමේ පහසුව. POS Screen එකේ උඩින් එක ක්ලික් එකෙන් Mode එක මාරු කළ හැක.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><span class="icon">🖨️</span> Universal Thermal Printer Support</div>
+            <p>ඕනෑම Bluetooth හෝ USB (OTG) Thermal Receipt Printer එකක් සම්බන්ධ කළ හැක. 58mm, 72mm, 80mm සහ Custom mm කඩදාසි සඳහා ස්වයංක්‍රීයව Layout සකස් වේ.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><span class="icon">💬</span> WhatsApp Bill Sharing</div>
+            <p>බිල්පතක් නිකුත් කළ වහාම හෝ History එකෙන් එක ක්ලික් එකකින් පාරිභෝගිකයාගේ WhatsApp අංකයට Formatted Digital Receipt එකක් යැවිය හැක.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><span class="icon">💰</span> ශුද්ධ ලාභය ගණනය (Net Profit Tracking)</div>
+            <p>භාණ්ඩවල ගන්නා මිල (Cost Price) ඇතුළත් කර සෑම බිල්පතකින්ම ලබන සැබෑ ශුද්ධ ලාභය (Net Profit = Sales - COGS - Expenses) සජීවීව බලාගත හැක.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><span class="icon">📄</span> PDF & CSV Export Reports</div>
+            <p>මාසික හෝ දිනපතා ආදායම්, වියදම් සහ ලාභ/අලාභ වාර්තා එක ක්ලික් එකකින් PDF සහ Excel (CSV) ගොනු ලෙස Phone/Tablet එකේ Downloads වෙත Save කරගත හැක.</p>
+        </div>
+
+        <div class="card">
+            <div class="card-header"><span class="icon">🏷️</span> Barcodes & Label Generator</div>
+            <p>භාණ්ඩ සඳහා Barcodes නිර්මාණය කිරීම, Scanner මගින් Scan කර බිල් කිරීම සහ Thermal Printer මගින් Barcode Labels Print කරගැනීම.</p>
+        </div>
+    </div>
+
+    <!-- Section 2: Extra Modules Table -->
+    <div class="section-title">
+        <span>2</span> අමතර කළමනාකරණ මොඩියුල (Integrated Modules)
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>මොඩියුලය (Module)</th>
+                <th>විස්තරය සහ භාවිතය (Description & Usage)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>🔧 Repairs Management</strong></td>
+                <td>ජංගම දුරකථන/උපාංග අලුත්වැඩියා භාරගැනීම, Job Status (Received, In Progress, Ready, Delivered) Update කිරීම.</td>
+            </tr>
+            <tr>
+                <td><strong>🔄 Returns Management</strong></td>
+                <td>පාරිභෝගිකයන් ආපසු ගෙන එන භාණ්ඩ සටහන් කිරීම, Refund මුදල් ගණනය සහ Stock එක නැවත Update කිරීම.</td>
+            </tr>
+            <tr>
+                <td><strong>👥 Customer Credit / Loans</strong></td>
+                <td>ණයට (Loan) බිල්පත් නිකුත් කිරීම සහ Customer Balance Payment ලැබුණු විට සටහන් කර ගැනීම.</td>
+            </tr>
+            <tr>
+                <td><strong>🌅 Day End & Expenses</strong></td>
+                <td>එදිනෙදා ව්‍යාපාරික වියදම් (Expenses) සටහන් කිරීම සහ දවස අවසානයේ Day End Summary Print කිරීම.</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <!-- Section 3: Step-by-Step User Manual -->
+    <div class="section-title">
+        <span>3</span> පද්ධතිය භාවිතා කරන ආකාරය (Step-by-Step Guide)
+    </div>
+
+    <div class="step-box">
+        <h4>1. POS Screen එකෙන් බිල්පත් නිකුත් කිරීම (Billing)</h4>
+        <p>• POS Screen එකේ ඉහළින් ඇති <strong>🏪 සිල්ලර</strong> හෝ <strong>📦 තොග</strong> Tab එක තෝරන්න.<br>
+        • අවශ්‍ය භාණ්ඩය Click කර හෝ Barcode එක Scan කර Cart එකට එකතු කරන්න.<br>
+        • <strong>Pay Cash / Card / Credit</strong> තෝරා බිල්පත Finalize කරන්න. Print / WhatsApp හරහා Bill එක ලබා දෙන්න.</p>
+    </div>
+
+    <div class="step-box">
+        <h4>2. Thermal Printer එක Connect කිරීම (Printer Setup)</h4>
+        <p>• Menu එකෙන් <strong>Settings → Printer Setup</strong> වෙත යන්න.<br>
+        • <strong>USB</strong> (OTG Cable මගින්) හෝ <strong>Bluetooth</strong> තෝරා ඔබේ Printer එක Connect කරන්න.<br>
+        • ඔබේ Printer එකේ කඩදාසි ප්‍රමාණය (58mm / 72mm / 80mm / Custom mm) තෝරා Save කරන්න.</p>
+    </div>
+
+    <div class="step-box">
+        <h4>3. භාණ්ඩ සහ ගන්නා මිල ඇතුළත් කිරීම (Products & Cost Price)</h4>
+        <p>• <strong>Products</strong> Screen එකට ගොස් <strong>+ Add Product</strong> Click කරන්න.<br>
+        • Product Name, Retail Price, Wholesale Price සහ <strong>Cost Price (ගන්නා මිල)</strong> ඇතුළත් කර Save කරන්න.</p>
+    </div>
+
+    <div class="step-box">
+        <h4>4. Reports සහ Net Profit පරීක්ෂා කිරීම (Financial Reports)</h4>
+        <p>• <strong>Reports</strong> Screen එක වෙත යන්න. <strong>Today / This Week / This Month</strong> තෝරන්න.<br>
+        • 💰 <strong>NET PROFIT ANALYSIS</strong> Card එකෙන් ඔබේ සැබෑ ශුද්ධ ලාභය බලාගන්න.<br>
+        • ඉහළින් ඇති <strong>Export PDF</strong> හෝ <strong>Export CSV</strong> Click කර වාර්තාව Save කරගන්න.</p>
+    </div>
+
+    <div class="step-box">
+        <h4>5. දින අවසාන වාර්තාව සහ වියදම් (Day End Summary)</h4>
+        <p>• <strong>Day End</strong> Screen එකට ගොස් එදිනෙදා වියදම් ඇතුළත් කරන්න.<br>
+        • 🖨️ <strong>Print Day End Report</strong> Click කර දවසේ මුළු ආදායම, වියදම් සහ ශුද්ධ ලාභය Thermal Printer එකෙන් Print කරගන්න.</p>
+    </div>
+
+    <div class="footer">
+        Jayaneth Demo POS System Guide · Printed Date: <span id="pdate">2026-07-27</span> · Compatible with Android Devices & Thermal Printers
+    </div>
+
+</body>
+</html>

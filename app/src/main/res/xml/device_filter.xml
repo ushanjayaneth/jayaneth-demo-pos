@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    USB Device filter for thermal receipt printers.
+    Allows ALL USB devices so any brand of printer will get auto-permission prompt.
+    Common thermal printer vendor IDs are listed first for quick matching.
+-->
+<resources>
+    <!-- Generic match: any USB device (printer class 7) -->
+    <usb-device class="7" subclass="1" protocol="2" />
+    <usb-device class="7" subclass="1" protocol="1" />
+
+    <!-- Epson printers -->
+    <usb-device vendor-id="1208" />
+    <!-- Star Micronics -->
+    <usb-device vendor-id="1305" />
+    <!-- BIXOLON / Samsung -->
+    <usb-device vendor-id="1504" />
+    <!-- Citizen -->
+    <usb-device vendor-id="2922" />
+    <!-- Woosim -->
+    <usb-device vendor-id="2655" />
+    <!-- Generic Chinese thermal printers (common vendor IDs) -->
+    <usb-device vendor-id="1155" />
+    <usb-device vendor-id="6790" />
+    <usb-device vendor-id="4070" />
+    <usb-device vendor-id="1659" />
+    <usb-device vendor-id="7358" />
+</resources>
